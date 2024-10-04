@@ -1,0 +1,32 @@
+{
+  "name": "api-gym",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src/server.ts --out-dir build",
+    "start": "node build/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "-": "^0.0.1",
+    "@prisma/client": "5.19.1",
+    "bcryptjs": "2.4.3",
+    "dotenv": "16.4.5",
+    "fastify": "4.28.1",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "2.2.2",
+    "@types/bcryptjs": "2.4.6",
+    "@types/node": "22.5.4",
+    "eslint": "8.57.0",
+    "prisma": "5.19.1",
+    "tsup": "8.2.4",
+    "tsx": "4.19.0",
+    "typescript": "5.6.2"
+  }
+}
