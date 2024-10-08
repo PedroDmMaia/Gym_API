@@ -2,10 +2,15 @@
   "name": "api-gym",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsup src/server.ts --out-dir build",
-    "start": "node build/server.js"
+    "start": "node build/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
   },
   "keywords": [],
   "author": "",
@@ -23,10 +28,13 @@
     "@rocketseat/eslint-config": "2.2.2",
     "@types/bcryptjs": "2.4.6",
     "@types/node": "22.5.4",
+    "@vitest/coverage-v8": "2.1.2",
     "eslint": "8.57.0",
     "prisma": "5.19.1",
     "tsup": "8.2.4",
     "tsx": "4.19.0",
-    "typescript": "5.6.2"
+    "typescript": "5.6.2",
+    "vite-tsconfig-paths": "5.0.1",
+    "vitest": "2.1.2"
   }
 }
