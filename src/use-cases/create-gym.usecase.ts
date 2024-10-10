@@ -1,11 +1,12 @@
-import { usersRepository } from '@/interface/users.interface'
-import { UserAlreadyExistsError } from './errors/user-already-exists.error'
 import { Gym } from '@prisma/client'
-import bcrypt from 'bcryptjs'
+import { GymRepository } from '@/interface/gym.interface'
 
 interface CreateGymUseCaseRequest {
-  titles: string
-  descriptions: string | null
+  title: string
+  description: string | null
+  phone: string | null
+  latitude: string
+  longitude: string
 }
 
 interface CreateGymUseCaseResponse {
@@ -13,29 +14,25 @@ interface CreateGymUseCaseResponse {
 }
 
 export class CreateGymUseCase {
-  constructor(private usersRepository: usersRepository) {}
+  constructor(private gymsRepository: GymRepository) {}
 
   async create({
-    name,
-    email,
-    password,
+    title,
+    description,
+    phone,
+    latitude,
+    longitude,
   }: CreateGymUseCaseRequest): Promise<CreateGymUseCaseResponse> {
-    const password_hash = await bcrypt.hash(password, 6)
-
-    const userWithSameEmail = await this.usersRepository.findByEmail(email)
-
-    if (userWithSameEmail) {
-      throw new UserAlreadyExistsError()
-    }
-
-    const user = await this.usersRepository.create({
-      name,
-      email,
-      password_hash,
+    const gym = await this.gymsRepository.create({
+      title,
+      description,
+      phone,
+      latitude,
+      longitude,
     })
 
     return {
-      user,
+      gym,
     }
   }
 }
