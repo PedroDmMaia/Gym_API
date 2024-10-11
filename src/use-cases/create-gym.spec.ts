@@ -6,7 +6,7 @@ import { Prisma } from '@prisma/client'
 let gymRepository: InMemoryGymRepository
 let sut: CreateGymUseCase
 
-describe('Register Use Case', () => {
+describe('Create Gym Use Case', () => {
   beforeEach(() => {
     gymRepository = new InMemoryGymRepository()
     sut = new CreateGymUseCase(gymRepository)
@@ -17,8 +17,8 @@ describe('Register Use Case', () => {
       title: 'Javascript Gym',
       description: null,
       phone: null,
-      latitude: new Prisma.Decimal(-27.2092052).toString(),
-      longitude: new Prisma.Decimal(-49.6401091).toString(),
+      latitude: -27.2092052,
+      longitude: -49.6401091,
     })
 
     expect(gym.id).toEqual(expect.any(String))
