@@ -10,11 +10,7 @@ export class PrismaUsersRepository implements usersRepository {
       },
     })
 
-    if (user) {
-      return user
-    }
-
-    return null
+    return user
   }
 
   async create(data: Prisma.UserCreateInput) {
